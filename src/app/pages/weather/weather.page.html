@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Weather</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar 
+    placeholder="Enter city name" 
+    (ionChange)="onSearchChange($event)">
+  </ion-searchbar>
+  <ion-button expand="full" (click)="searchWeather()">Search</ion-button>
+
+  <div *ngIf="weatherData ">
+    <!-- Display weather data here -->
+    <ion-card>
+      <ion-card-header>
+
+        <ion-card-title>{{ weatherData.location.localtime }} </ion-card-title>
+        <ion-card-title>{{ weatherData.location.name }}  {{ weatherData.current.temp_c }}°C  </ion-card-title>
+        
+        
+      </ion-card-header>
+      <ion-card-content>
+        <p>Temperature: {{ weatherData.current.temp_c }}°C</p>
+        <p>Condition: {{ weatherData.current.condition.text }}</p>
+        <p>Humidity: {{ weatherData.current.humidity }}%</p>
+        <p>Cloud: {{ weatherData.current.cloud }}%</p>
+        <p>Wind: {{ weatherData.current.wind_kph }}kph</p>
+        
+        <!-- Add more weather details here -->
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+
